@@ -1,4 +1,11 @@
+using MakePlus.Infraestructure.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+//Connetion String
+builder.Services.AddDbContext<MakePlusContext>(options =>
+                options.UseMySql(builder.Configuration.GetConnectionString("MakeplusContext"), Microsoft.EntityFrameworkCore.ServerVersion.Parse("9.0.0-mysql")));
 
 // Add services to the container.
 
